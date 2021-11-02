@@ -5,37 +5,41 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2>崎田大貴</h2>
-                <form action="{{ action('Admin\NewsController@create') }}" method="post" enctype="multipart/form-data">
+                <h2>ニュース新規作成</h2>
+                <form action="{{ action('Admin\ProfileController@create') }}" method="post" enctype="multipart/form-data">
 
-                    @if (count($errors) > 0)
+                 @if (count($errors) > 0)
                         <ul>
                             @foreach($errors->all() as $e)
                                 <li>{{ $e }}</li>
                             @endforeach
                         </ul>
                     @endif
-                    
-                        <label class="col-md-2">男性</label>
-                        <div class="col-md-10">
-                        <div class="form-group row">
-                        <label class="col-md-2">趣味</label>
-                       <div class="col-md-10">
-                            
-                          <textarea class="form-control" name="body" rows="10">{{ old('body') }}</textarea>
-                        </div>
-                     </div>
-                   </div> 
                     <div class="form-group row">
-                        <label class="col-md-2">自己紹介欄</label>
+                        <label class="col-md-2" for="title">氏名</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="body" rows="10">{{ old('body') }}</textarea>
+                            <input type="text" class="form-control" name="title" value="{{ old('title') }}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2">画像</label>
+                        <label class="col-md-2" for="body">性別</label>
                         <div class="col-md-10">
-                            <input type="file" class="form-control-file" name="image">
+                           <select name="gender">
+                            <option value="男性">男性</option>
+                            <option value="女性">女性</option>
+                       </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2" for="title">趣味</label>
+                        <div class="col-md-10">
+                          <textarea class="form-control" name="hobby" rows="5">{{ old('hobby') }}</textarea>  
+                       </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2">自己紹介</label>
+                        <div class="col-md-10">
+                            <textarea class="form-control" name="hobby" rows="5">{{ old('hobby') }}</textarea>
                         </div>
                     </div>
                     {{ csrf_field() }}
